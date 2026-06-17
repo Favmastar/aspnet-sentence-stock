@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "restore",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["restore", "SentenceStock.slnx"],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build", "SentenceStock.slnx", "--no-restore"],
+      "dependsOn": "restore",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "test",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["test", "SentenceStock.slnx", "--no-build"],
+      "dependsOn": "build",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "run web",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run", "--project", "SentenceStock.Web/SentenceStock.Web.csproj"],
+      "isBackground": true,
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

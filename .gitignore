@@ -1,0 +1,105 @@
+# Project guidance files such as AGENTS.md are intentionally tracked.
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+publish/
+artifacts/
+
+# .NET generated files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+project.lock.json
+project.fragment.lock.json
+artifacts/
+TestResult*/
+[Tt]est[Rr]esults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+*.trx
+*.nupkg
+*.snupkg
+
+# ASP.NET and local configuration
+appsettings.Local.json
+appsettings.*.Local.json
+*.local.json
+*.local.settings.json
+secrets.json
+.env
+.env.*
+!.env.example
+
+# SQLite runtime databases
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+LogFiles/
+
+# Visual Studio
+.vs/
+*.vssscc
+*.vspscc
+*.vsp
+*.vspx
+*.psess
+*.vspf
+
+# Visual Studio Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# NuGet
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Docker and local tooling
+.docker/
+docker-compose.override.yml
+
+# Node or frontend tooling, if added later
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local assistant or scratch files
+.codex/
+.agents.local/
+*.scratch.*
+*.tmp
+*.temp
