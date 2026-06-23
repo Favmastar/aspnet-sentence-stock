@@ -2,9 +2,10 @@
   "recommendations": [
     "ms-dotnettools.csdevkit",
     "ms-dotnettools.csharp",
-    "ms-azuretools.vscode-docker",
+    "ms-python.python",
     "github.vscode-github-actions",
-    "qwtel.sqlite-viewer",
-    "patcx.vscode-nuget-gallery"
+    "patcx.vscode-nuget-gallery",
+    "angular.ng-template",
+    "graphql.vscode-graphql"
   ]
 }

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" ng-app="sentenceStock">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SentenceStock</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body ng-controller="SentenceController as vm">
+    <main class="shell">
+      <header class="toolbar">
+        <div>
+          <h1>SentenceStock</h1>
+          <p>Save, search, and organize example sentences.</p>
+        </div>
+        <button type="button" ng-click="vm.load()">Refresh</button>
+      </header>
+
+      <section class="filters">
+        <input type="search" placeholder="Keyword" ng-model="vm.keyword" ng-change="vm.load()">
+        <input type="search" placeholder="Tag" ng-model="vm.tag" ng-change="vm.load()">
+        <label>
+          <input type="checkbox" ng-model="vm.favoritesOnly" ng-change="vm.load()">
+          Favorites
+        </label>
+      </section>
+
+      <section class="workspace">
+        <form class="entry" ng-submit="vm.create()">
+          <input required placeholder="Sentence" ng-model="vm.form.text">
+          <div class="grid">
+            <input placeholder="Language" ng-model="vm.form.language">
+            <input placeholder="Source" ng-model="vm.form.source">
+          </div>
+          <input placeholder="Tags, comma separated" ng-model="vm.form.tags">
+          <textarea placeholder="Notes" ng-model="vm.form.notes"></textarea>
+          <button type="submit">Add Sentence</button>
+        </form>
+
+        <div class="list">
+          <article class="sentence" ng-repeat="sentence in vm.sentences track by sentence.id">
+            <div class="sentence-header">
+              <strong>{{ sentence.language || 'Unknown' }}</strong>
+              <div class="actions">
+                <button type="button" ng-click="vm.toggleFavorite(sentence)">
+                  {{ sentence.isFavorite ? '★' : '☆' }}
+                </button>
+                <button type="button" ng-click="vm.delete(sentence)">Delete</button>
+              </div>
+            </div>
+            <p>{{ sentence.text }}</p>
+            <small>{{ sentence.source }}</small>
+            <div class="tags">
+              <span ng-repeat="tag in sentence.tags track by tag">{{ tag }}</span>
+            </div>
+            <em>{{ sentence.notes }}</em>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

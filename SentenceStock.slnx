@@ -1,4 +1,5 @@
 <Solution>
-  <Project Path="SentenceStock.Tests/SentenceStock.Tests.csproj" />
-  <Project Path="SentenceStock.Web/SentenceStock.Web.csproj" />
+  <Project Path="src/SentenceStock.Api/SentenceStock.Api.csproj" />
+  <Project Path="src/SentenceStock.Domain/SentenceStock.Domain.csproj" />
+  <Project Path="tests/SentenceStock.Domain.Tests/SentenceStock.Domain.Tests.csproj" />
 </Solution>

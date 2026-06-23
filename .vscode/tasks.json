@@ -2,18 +2,18 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "restore",
+      "label": "dotnet restore",
       "type": "process",
       "command": "dotnet",
       "args": ["restore", "SentenceStock.slnx"],
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "build",
+      "label": "dotnet build",
       "type": "process",
       "command": "dotnet",
       "args": ["build", "SentenceStock.slnx", "--no-restore"],
-      "dependsOn": "restore",
+      "dependsOn": "dotnet restore",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -21,11 +21,11 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "test",
+      "label": "dotnet test",
       "type": "process",
       "command": "dotnet",
       "args": ["test", "SentenceStock.slnx", "--no-build"],
-      "dependsOn": "build",
+      "dependsOn": "dotnet build",
       "group": {
         "kind": "test",
         "isDefault": true
@@ -33,12 +33,44 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "run web",
+      "label": "frontend install",
+      "type": "process",
+      "command": "npm",
+      "args": ["install"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "frontend build",
+      "type": "process",
+      "command": "npm",
+      "args": ["run", "build"],
+      "dependsOn": "frontend install",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "run api",
       "type": "process",
       "command": "dotnet",
-      "args": ["run", "--project", "SentenceStock.Web/SentenceStock.Web.csproj"],
+      "args": ["run", "--project", "src/SentenceStock.Api/SentenceStock.Api.csproj"],
       "isBackground": true,
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "run frontend",
+      "type": "process",
+      "command": "npm",
+      "args": ["run", "serve"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "isBackground": true,
+      "problemMatcher": []
     }
   ]
 }
